@@ -22,9 +22,6 @@ class CustomerUserProfile(AbstractBaseUser):
     address = models.TextField()
     phone_number = models.CharField(max_length=15)
     company_name = models.CharField(max_length=255)
-    is_staff= models.BooleanField(default=False)
-    is_superuser= models.BooleanField(default=False)
-
     objects = CustomerUserManager()
 
     USERNAME_FIELD ='email'

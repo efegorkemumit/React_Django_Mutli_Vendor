@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import CompanyUser
 
-# Register your models here.
+class CompanyUserAdmin(admin.ModelAdmin):
+    pass
+    # başka özellik eklemek istiyorsan burdan ekle
+
+admin.site.register(CompanyUser, CompanyUserAdmin )
