@@ -129,6 +129,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL="adminsections.CustomerUser"
 AUTH_USER_MODEL="companies.CompanyUser"
 AUTH_USER_MODEL="customers.CustomerUserProfile"
+AUTH_USER_MODEL="adminsections.CustomerUser"

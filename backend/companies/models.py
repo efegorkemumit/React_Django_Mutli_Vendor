@@ -11,6 +11,11 @@ class CompanyUserManager(BaseUserManager):
         user.set_password(password)
         user.save(using = self.db)
         return user
+    
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        return self.create_user(email,password, **extra_fields)
 
 class CompanyUser(AbstractBaseUser):
     email = models.EmailField(unique=True)
@@ -23,6 +28,7 @@ class CompanyUser(AbstractBaseUser):
     phone_number = models.CharField(max_length=15)
     company_name = models.CharField(max_length=255)
     is_staff= models.BooleanField(default=False)
+    is_superuser= models.BooleanField(default=False)
 
     objects = CompanyUserManager()
 
