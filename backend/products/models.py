@@ -1,5 +1,6 @@
 from django.db import models
 from autoslug import AutoSlugField
+from .valid import valid_image_exstension, valid_size
 
 
 def category_image_path(instance, filename):
@@ -12,6 +13,7 @@ class Category(models.Model):
         upload_to=category_image_path,
         null=True,
         blank=True,
+        validators={valid_image_exstension, valid_size}
         
     )
 
