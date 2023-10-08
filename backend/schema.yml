@@ -1,0 +1,7 @@
+openapi: 3.0.3
+info:
+  title: Youtube Efe Görkem Ümit
+  version: 1.0.0
+  description: 'Abone Ol '
+paths: {}
+components: {}

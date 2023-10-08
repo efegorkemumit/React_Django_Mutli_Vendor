@@ -31,6 +31,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
     'adminsections',
     'companies',
     'customers'
@@ -43,7 +45,9 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
 }
 
 MIDDLEWARE = [
@@ -132,3 +136,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL="companies.CompanyUser"
 AUTH_USER_MODEL="customers.CustomerUserProfile"
 AUTH_USER_MODEL="adminsections.CustomerUser"
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Youtube Efe Görkem Ümit',
+    'DESCRIPTION': 'Abone Ol ',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+}
