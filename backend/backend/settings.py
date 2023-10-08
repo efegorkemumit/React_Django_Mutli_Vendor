@@ -146,7 +146,7 @@ SPECTACULAR_SETTINGS = {
     'TITLE': 'Youtube Efe Görkem Ümit',
     'DESCRIPTION': 'Abone Ol ',
     'VERSION': '1.0.0',
-    'SERVE_INCLUDE_SCHEMA': False,
+    'SERVE_INCLUDE_SCHEMA': True,
     'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
     'REDOC_DIST': 'SIDECAR',
