@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework import  serializers
-from .models import Category, Brand
+from .models import Category, Brand, Product
 
 
 # Serializers define the API representation.
@@ -12,4 +12,9 @@ class CategorySerializer(serializers.ModelSerializer):
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
+        fields = '__all__'
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
         fields = '__all__'

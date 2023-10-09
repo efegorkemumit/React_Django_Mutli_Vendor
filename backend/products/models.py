@@ -54,9 +54,7 @@ class Product(models.Model):
     whislist = models.ManyToManyField(CustomerUserProfile)
     image = CloudinaryField('image')
     image2 = CloudinaryField('image2')
-    image3 = CloudinaryField('image3')
-    image4 = CloudinaryField('image4')
-    image5 = CloudinaryField('image5')
+
 
 
 

@@ -5,10 +5,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework import routers
 from rest_framework.routers import DefaultRouter
-from products.views import CategoryViewSet
+from products.views import CategoryViewSet, BrandViewSet, ProductViewSet
 
 router = routers.DefaultRouter()
 router.register('api/category/select', CategoryViewSet)
+router.register('api/brand/select', BrandViewSet)
+router.register('api/product/select', ProductViewSet)
 
 
 urlpatterns = [

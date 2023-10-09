@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Category
-from .serializer import CategorySerializer
+from .models import Category, Brand , Product
+from .serializer import CategorySerializer , BrandSerializer, ProductSerializer
 from rest_framework.response import Response
 from .schema import category_doc
 
@@ -45,4 +45,31 @@ class CategoryViewSet(viewsets.ViewSet):
             self.queryset = self.queryset.filter(slug = slug)
 
         serializer = CategorySerializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+class BrandViewSet(viewsets.ViewSet):
+    queryset = Brand.objects.all()
+
+    def list(self, request):
+       
+
+        slug = request.query_params.get("slug")
+        if slug:
+            self.queryset = self.queryset.filter(slug = slug)
+
+        serializer = BrandSerializer(self.queryset, many=True)
+        return Response(serializer.data)
+
+
+class ProductViewSet(viewsets.ViewSet):
+    queryset = Product.objects.all()
+
+    def list(self, request):
+       
+
+        slug = request.query_params.get("slug")
+        if slug:
+            self.queryset = self.queryset.filter(slug = slug)
+
+        serializer = ProductSerializer(self.queryset, many=True)
         return Response(serializer.data)
