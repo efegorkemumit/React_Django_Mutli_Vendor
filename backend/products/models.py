@@ -21,6 +21,13 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+class Brand(models.Model):
+    title = models.CharField(max_length=100)
+    slug = AutoSlugField(populate_from='title')
+
+    def __str__(self):
+        return self.title
+
 class Product(models.Model):
     title = models.CharField(max_length=100)
     slug = AutoSlugField(populate_from='title')
@@ -41,6 +48,7 @@ class Product(models.Model):
         )
     size = models.CharField(max_length=10, choices=SIZE_CHOICE, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    brandid = models.ForeignKey(Brand, on_delete=models.CASCADE)
     created_by = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     whislist = models.ManyToManyField(CustomerUserProfile)
 
@@ -48,4 +56,6 @@ class Product(models.Model):
         return self.title
 
 
-   
+   #### python manage.py migrate --run-syncdb
+   # python manage.py migrate --fake
+   #  python manage.py  makemigrations products
