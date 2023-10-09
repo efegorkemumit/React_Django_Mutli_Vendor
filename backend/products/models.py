@@ -3,6 +3,7 @@ from autoslug import AutoSlugField
 from .valid import valid_image_exstension, valid_size
 from adminsections.models import CustomerUser
 from customers.models import CustomerUserProfile
+from cloudinary.models import CloudinaryField
 
 def category_image_path(instance, filename):
     return f"category/{instance.id}/server/{filename}"
@@ -51,6 +52,13 @@ class Product(models.Model):
     brandid = models.ForeignKey(Brand, on_delete=models.CASCADE)
     created_by = models.ForeignKey(CustomerUser, on_delete=models.CASCADE)
     whislist = models.ManyToManyField(CustomerUserProfile)
+    image = CloudinaryField('image')
+    image2 = CloudinaryField('image2')
+    image3 = CloudinaryField('image3')
+    image4 = CloudinaryField('image4')
+    image5 = CloudinaryField('image5')
+
+
 
     def __str__(self):
         return self.title
