@@ -16,4 +16,4 @@ def valid_size(image):
             if img.width> 70 or img.height>70:
                   raise ValidationError(
                    f"The maximum allowed size 70x70"
-                 )
+                  )
