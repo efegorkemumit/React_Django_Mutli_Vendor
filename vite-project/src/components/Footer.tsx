@@ -8,7 +8,7 @@ const Footer = () => {
                      <div className="container">
                         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                             <div className="space-y-8 xl:col-span-1">
-                                <img src="img/logo.png" className="w-64 h-auto" alt="Youtube Efe Görkem Ümit" />
+                                <img src="src/img/logo.png" className="w-64 h-auto" alt="Youtube Efe Görkem Ümit" />
                                 <p className="text-gray-400 text-sm font-poppins" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, reprehenderit.</p>
 
                                 <div className="flex space-x-5">

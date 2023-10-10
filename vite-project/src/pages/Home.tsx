@@ -1,43 +1,10 @@
+import Slider from "../components/Slider"
 
 const Home = () => {
 
   return (
     <>
-  <div className="slider">
-
-<div className="slide w-full h-full bg-repeat-round object-cover">
-    <div className="container pt-28 pb-24 md:pb-36 lg:pb-54 xl:pb-70">
-       <h1 className="text-4xl xl:text-6xl md:text-5xl text-gray-900 font-semibold mb-4"> Best Collection </h1>
-       <p className="text-base text-gray-700 leading-7">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ab, quibusdam saepe iste nemo provident.</p>
-       <div className="mt-12">
-        <a className="bg-primary border border-primary
-         text-white px-8 py-3 font-medium rounded-xl uppercase hover:bg-red-950 transition " href="shop.html">Shop now
-
-        </a>
-
-    </div>
-    
-    </div>
-
-</div>
-
-<div className="slide w-full h-full bg-repeat-round object-cover">
-    <div className="container pt-28 pb-24 md:pb-36 lg:pb-54 xl:pb-70">
-       <h1 className="text-4xl xl:text-6xl md:text-5xl text-gray-900 font-semibold mb-4"> True Collection </h1>
-       <p className="text-base text-gray-700 leading-7">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis ab, quibusdam saepe iste nemo provident.</p>
-       <div className="mt-12">
-        <a className="bg-primary border border-primary
-         text-white px-8 py-3 font-medium rounded-xl uppercase hover:bg-red-950 transition " href="shop.html">Shop now
-
-        </a>
-
-    </div>
-    
-    </div>
-
-</div>
-
-</div>
+<Slider></Slider>
      
 <div className="container">
 
