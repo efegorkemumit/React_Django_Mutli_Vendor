@@ -1,6 +1,19 @@
 import Slider from "../components/Slider"
+import axios from "axios"
+import React, {useEffect, useState} from "react";
+import {MEDIA_URL, BASE_URL} from '../configUrl'
 
 const Home = () => {
+
+    const[data, setData] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/category/select/').then((response)=>{
+        
+        setData(response.data);
+
+      })
+    }, [] )
 
   return (
     <>
@@ -55,48 +68,20 @@ const Home = () => {
 
                 <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-3">
 
-                    <div className="overflow-hidden relative group rounded-xl">
-                        <img src="img/category/1.jpg" className="w-full"/>
-                        <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
-                         text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Shoes</a>
+
+{data.map((category)=>
+
+    <div className="overflow-hidden relative group rounded-xl">
+    <img src={`${MEDIA_URL}${category.photo}`} className="w-full"/>
+    <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
+    text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">{category.title}</a>
 
 
-                    </div>
-                    <div className="overflow-hidden relative group rounded-xl">
-                        <img src="img/category/2.jpg" className="w-full"/>
-                        <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
-                         text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Dress</a>
+    </div>
 
-
-                    </div>
-                    <div className="overflow-hidden relative group rounded-xl">
-                        <img src="img/category/3.jpg" className="w-full"/>
-                        <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
-                         text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Watch</a>
-
-
-                    </div>
-                    <div className="overflow-hidden relative group rounded-xl">
-                        <img src="img/category/4.jpg" className="w-full"/>
-                        <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
-                         text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Computer</a>
-
-
-                    </div>
-                    <div className="overflow-hidden relative group rounded-xl">
-                        <img src="img/category/5.jpg" className="w-full"/>
-                        <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
-                         text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Mobile Phone</a>
-
-
-                    </div>
-                    <div className="overflow-hidden relative group rounded-xl">
-                        <img src="img/category/6.jpg" className="w-full"/>
-                        <a href="#" className="absolute inset-0 flex items-center justify-center text-xl
-                         text-white font-roboto font-medium bg-black bg-opacity-60 hover:bg-opacity-40 transition">Sport</a>
-
-
-                    </div>
+)}
+                  
+                   
 
                 </div>
 

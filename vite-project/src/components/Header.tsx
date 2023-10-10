@@ -1,5 +1,16 @@
+import React, {useEffect, useState} from "react";
+
 
 const Header = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () =>{
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () =>{
+    setMobileMenuOpen(false);
+  };
 
     return (
       <>
@@ -126,7 +137,7 @@ const Header = () => {
      <div className="lg:hidden flex z-40 fixed w-full border-t border-gray-900 shadow-xl bg-white py-3 bottom-0 justify-around items-start px-6">
 
         <a href="#" className="block text-center text-gray-950 hover:text-primary transition relative">
-            <div className="text-2xl" id="menuBar">
+            <div className="text-2xl" id="menuBar" onClick={toggleMobileMenu}>
                 <i className="fa-solid fa-bars"></i> 
             </div>
 
@@ -164,9 +175,9 @@ const Header = () => {
 
 
 
-                <div className="fixed left-0 top-0 w-full h-full z-50 bg-black bg-opacity-30  shadow hidden" id="mobileMenu">
+                <div className={`fixed left-0 top-0 w-full h-full z-50 bg-black bg-opacity-30  shadow  ${isMobileMenuOpen ? '' :'hidden' }`} id="mobileMenu">
                     <div className="absolute left-0 top-0 w-72 h-full z-50 bg-white shadow-md">
-                        <div className="text-gray-600 hover:text-primary text-lg absolute right-3 top-3 cursor-pointer" id="closeMenu">
+                        <div className="text-gray-600 hover:text-primary text-lg absolute right-3 top-3 cursor-pointer" onClick={closeMobileMenu}  id="closeMenu">
 
                             <i className="fa-solid fa-xmark"></i>
 
