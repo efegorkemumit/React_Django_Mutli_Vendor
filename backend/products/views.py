@@ -68,8 +68,35 @@ class ProductViewSet(viewsets.ViewSet):
        
 
         slug = request.query_params.get("slug")
+        category_id = request.query_params.get("category")
+        min_price = request.query_params.get("min_price")
+        max_price = request.query_params.get("max_price")
+        avaible = request.query_params.get("avaible")
+        is_new = request.query_params.get("is_new")
+        is_top = request.query_params.get("is_top")
+        rating = request.query_params.get("rating")
+
         if slug:
             self.queryset = self.queryset.filter(slug = slug)
+        if category_id:
+            self.queryset = self.queryset.filter(category = category_id)
+        if min_price:
+            self.queryset = self.queryset.filter(price__gte = min_price)
+        if max_price:
+            self.queryset = self.queryset.filter(price__lte = max_price)
+        if avaible:
+            avaible = avaible.lower()== "true"
+            self.queryset = self.queryset.filter(avaible=avaible)
+        if is_new:
+            is_new = is_new.lower()== "true"
+            self.queryset = self.queryset.filter(is_new=is_new)
+        if is_top:
+            is_top = is_top.lower()== "true"
+            self.queryset = self.queryset.filter(is_top=is_top)
+       
+        
+      
+
 
         serializer = ProductSerializer(self.queryset, many=True)
         return Response(serializer.data)
