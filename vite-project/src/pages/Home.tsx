@@ -2,6 +2,7 @@ import Slider from "../components/Slider"
 import axios from "axios"
 import React, {useEffect, useState} from "react";
 import {MEDIA_URL, BASE_URL} from '../configUrl'
+import Product from "../components/Product";
 
 const Home = () => {
 
@@ -11,6 +12,17 @@ const Home = () => {
       axios.get(BASE_URL+'/category/select/').then((response)=>{
         
         setData(response.data);
+
+      })
+    }, [] )
+
+
+    const[products, setProducts] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/product/select/').then((response)=>{
+        
+        setProducts(response.data);
 
       })
     }, [] )
@@ -94,6 +106,9 @@ const Home = () => {
                     <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6">
 
 
+            {products.map((product)=>
+                <Product key={product.id}  product={product} />
+                )}
                         <div className="group rounded-xl bg-white shadow-lg overflow-hidden">
                             <div className="relative">
                                     <img src="img/product/cp-1.png" className="w-full" />

@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios"
+import {MEDIA_URL, BASE_URL} from '../configUrl'
 
 
 const Header = () => {
@@ -11,6 +13,19 @@ const Header = () => {
   const closeMobileMenu = () =>{
     setMobileMenuOpen(false);
   };
+
+
+  
+  const[data, setData] =useState([])
+
+  useEffect(()=>{
+    axios.get(BASE_URL+'/category/select/').then((response)=>{
+      
+      setData(response.data);
+
+    })
+  }, [] )
+
 
     return (
       <>
@@ -77,35 +92,15 @@ const Header = () => {
                          <div className="absolute left-0 top-full w-full bg-white shadow-xl py-3 opacity-0 
                          invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50
                          divide-y divide-gray-500 divide-dashed">
+
+            {data.map((category)=>
                          <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
                             <i className="fa-solid fa-shoe-prints"></i>
-                           <span className="ml-6 text-gray-500 text-sm font-semibold">Shoes</span> 
+                           <span className="ml-6 text-gray-500 text-sm font-semibold">{category.title}</span> 
                          </a>
+                         )}
 
-                         <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
-                            <i className="fa-solid fa-clock"></i>
-                           <span className="ml-6 text-gray-500 text-sm font-semibold">Watch</span> 
-                         </a>
-
-                         <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
-                            <i className="fa-solid fa-person-dress"></i>
-                           <span className="ml-6 text-gray-500 text-sm font-semibold">Dress</span> 
-                         </a>
-
-                         <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
-                            <i className="fa-solid fa-mobile-button"></i>
-                         <span className="ml-6 text-gray-500 text-sm font-semibold">Mobile Phone</span> 
-                         </a>
-
-                         <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
-                            <i className="fa-solid fa-computer"></i>
-                           <span className="ml-6 text-gray-500 text-sm font-semibold">Computer</span> 
-                         </a>
-
-                         <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
-                            <i className="fa-solid fa-bicycle"></i>
-                           <span className="ml-6 text-gray-500 text-sm font-semibold">Sport</span> 
-                         </a>
+                         
 
 
                          </div>
