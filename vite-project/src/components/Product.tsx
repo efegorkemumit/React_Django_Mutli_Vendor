@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import StarRating from "./StarRating";
+import {CloudURL} from '../configUrl'
 interface ProductProps{
     product : {
         id: number;
@@ -9,7 +11,7 @@ interface ProductProps{
     }
 }
 
-const Product: React.FC = ({product})=>{
+const Product: React.FC = ({product, rating})=>{
 
     
 
@@ -18,7 +20,7 @@ const Product: React.FC = ({product})=>{
         
         <div className="group rounded-xl bg-white shadow-lg overflow-hidden">
         <div className="relative">
-                <img src="img/product/cp-1.png" className="w-full" />
+                <img src={`${CloudURL}${product.image}`} className="w-full" />
 
           <div className="absolute inset-0 flex items-center justify-center text-xl
                 text-white font-roboto font-medium  opacity-0 bg-black bg-opacity-0  group-hover:opacity-100 group-hover:bg-opacity-30 transition">
@@ -51,15 +53,7 @@ const Product: React.FC = ({product})=>{
             </div>
 
             <div className="flex items-center">
-                <div className="flex gap-1 text-sm text-yellow-500">
-                    <span><i className="fa-solid fa-star"></i></span>
-                    <span><i className="fa-solid fa-star"></i></span>
-                    <span><i className="fa-solid fa-star"></i></span>
-                    <span><i className="fa-solid fa-star"></i></span>
-                    <span><i className="fa-solid fa-star"></i></span>
-
-
-                </div>
+               <StarRating rating={product.rating} />
                 <div className="text-xs text-gray-500 ml-3">(120)</div>
 
 
