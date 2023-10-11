@@ -1,6 +1,42 @@
-import React from 'react'
+import axios from "axios"
+import React, {useEffect, useState} from "react";
+import {MEDIA_URL, BASE_URL} from '../configUrl'
+import Product from "../components/Product";
 
 function Shop() {
+
+    const[products, setProducts] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/product/select/').then((response)=>{
+        
+        setProducts(response.data);
+
+      })
+    }, [] )
+
+    const[categories, setCategories] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/category/select/').then((response)=>{
+        
+        setCategories(response.data);
+
+      })
+    }, [] )
+
+    
+
+    const[brandies, setbrandies] =useState([])
+    useEffect(()=>{
+        axios.get(BASE_URL+'/brand/select/').then((response)=>{
+          
+            setbrandies(response.data);
+  
+        })
+      }, [] )
+
+
   return (
       
       <div>
@@ -21,6 +57,7 @@ function Shop() {
 
 
 <div className="container grid lg:grid-cols-4 gap-6 pt-4 pb-16 items-start">
+<form action="" method="">
     <div className="col-span-1 bg-gray-100 px-4 pb-6 shadow-xl rounded-md overflow-hidden w-96 md:absolute lg:static left-4 top-7 z-10 lg:w-full lg:block">
 
         <div className="divide-gray-500 divide-y space-y-5 relative">
@@ -32,47 +69,20 @@ function Shop() {
                 <div className="space-y-2">
 
 
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Shoes</label>
-                        <div className="ml-auto text-gray-600 text-sm">(10)</div>
-
-                    </div>
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Watch</label>
-                        <div className="ml-auto text-gray-600 text-sm">(50)</div>
-
-                    </div>
-
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Sport</label>
-                        <div className="ml-auto text-gray-600 text-sm">(3)</div>
+                {categories.map((category)=>(
+                    <div key={category.id}  className="flex items-center mt-1">
+                        <input 
+                        type="radio" 
+                        name="category"
+                        className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
+                        <label className="ml-3 text-gray-950">{category.title}</label>
+                        <div className="ml-auto text-gray-600 text-sm">({category.product_count})</div>
 
                     </div>
 
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Dress</label>
-                        <div className="ml-auto text-gray-600 text-sm">(100)</div>
+                    ))}
 
-                    </div>
-
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Computer</label>
-                        <div className="ml-auto text-gray-600 text-sm">(2)</div>
-
-                    </div>
-
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Mobile Phone</label>
-                        <div className="ml-auto text-gray-600 text-sm">(2)</div>
-
-                    </div>
-
+                 
 
 
                     
@@ -89,46 +99,20 @@ function Shop() {
                 <div className="space-y-2">
 
 
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Apple</label>
-                        <div className="ml-auto text-gray-600 text-sm">(10)</div>
-
-                    </div>
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Zara</label>
-                        <div className="ml-auto text-gray-600 text-sm">(50)</div>
-
-                    </div>
-
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Dym</label>
-                        <div className="ml-auto text-gray-600 text-sm">(3)</div>
+                {brandies.map((brand)=>(
+                    <div key={brand.id}  className="flex items-center mt-1">
+                        <input 
+                        type="radio" 
+                        name="category"
+                        className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
+                        <label className="ml-3 text-gray-950">{brand.title}</label>
+                        <div className="ml-auto text-gray-600 text-sm">({brand.product_count})</div>
 
                     </div>
 
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Success</label>
-                        <div className="ml-auto text-gray-600 text-sm">(100)</div>
+                    ))}
 
-                    </div>
-
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950">Danger</label>
-                        <div className="ml-auto text-gray-600 text-sm">(2)</div>
-
-                    </div>
-
-                    <div className="flex items-center mt-1">
-                        <input type="checkbox" className="text-primary focus:ring-0 cursor-pointer rounded-sm"/>
-                        <label className="ml-3 text-gray-950"> Phone</label>
-                        <div className="ml-auto text-gray-600 text-sm">(2)</div>
-
-                    </div>
+                  
 
 
 
@@ -212,91 +196,6 @@ function Shop() {
 
             
                <div className="pt-4 relative">
-                <h3 className="text-xl text-gray-800 uppercase mb-4 mt-3 font-medium">Color</h3>
-                <div className="flex flex-wrap items-center gap-2 ">
-
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-black"/>
-                        <label for="color-black"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-yellow"/>
-                        <label for="color-yellow"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-white"/>
-                        <label for="color-white"  className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-blue"/>
-                        <label for="color-blue"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-green"/>
-                        <label for="color-green"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-pink"/>
-                        <label for="color-pink"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-orange"/>
-                        <label for="color-orange"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-red"/>
-                        <label for="color-red"  className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-
-                    <div className="color-selector">
-
-                        <input type="radio" name="size" className="hidden" id="color-purple"/>
-                        <label for="color-purple"   className="text-xs border border-gray-200  rounded-full h-7 w-7 flex 
-                        items-center justify-center cursor-pointer shadow-sm text-gray-900" ></label>
-    
-                    </div>
-            
-               
-               
-
-                  </div>
-
-
-
-
-               
 
 
              </div>
@@ -309,30 +208,14 @@ function Shop() {
         
 
     </div>
+
+    </form>
     <div className="col-span-3">
 
 <div className="mb-4 flex items-center">
 
 
-<select className="w-60 text-sm text-gray-700 px-4 py-3 border border-gray-950 shadow-lg rounded-md focus:ring-primary focus:border-primary focus:border">
-   <option>Default Shorting</option>
-   <option>Price Low-Shorting</option>
-   <option>Price High-Shorting</option>
 
-</select>
-
-<div className="flex gap-2 ml-auto">
-<div className="border border-primary w-10 h-9 flex bg-white rounded-lg cursor-pointer items-center justify-center text-primary">
-   <i className="fa-solid fa-list"></i>
-</div>
-
-
-<div className="border border-primary w-10 h-9 flex bg-primary rounded-lg cursor-pointer items-center justify-center text-white">
-<i className="fa-solid fa-rectangle-list"></i>
-</div>
-
-
-</div>
 
 
 
@@ -341,7 +224,9 @@ function Shop() {
 <div className="grid lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-2 gap-6">
 
    
-
+{products.map((product)=>
+                <Product key={product.id}  product={product} />
+                )}
 
 
 
