@@ -46,6 +46,27 @@ const Footer = () => {
       })
     }, [] )
 
+    const[about, setabout] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/sitesettings/about/select').then((response)=>{
+        
+        setabout(response.data);
+
+      })
+    }, [] )
+
+    const[socialmedia, setsocial] =useState([])
+
+
+    useEffect(()=>{
+        axios.get(BASE_URL+'/sitesettings/social/select').then((response)=>{
+          
+            setsocial(response.data);
+  
+        })
+      }, [] )
+
 
 
 
@@ -57,33 +78,31 @@ const Footer = () => {
                         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                             <div className="space-y-8 xl:col-span-1">
                                 <img src="src/img/logo.png" className="w-64 h-auto" alt="Youtube Efe Görkem Ümit" />
-                                <p className="text-gray-400 text-sm font-poppins" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, reprehenderit.</p>
+
+                                {about.map((aboutus)=>
+
+<p className="text-gray-400 text-sm font-poppins" > {aboutus.smalldesc} </p>
+
+
+)}
+
 
                                 <div className="flex space-x-5">
-                                    <a href="#" className="text-gray-400 text-sm font-poppins hover:text-gray-100">
-                                        <i className="fa-brands fa-facebook"></i>
 
-                                    </a>
 
-                                    <a href="#" className="text-gray-400 text-sm font-poppins hover:text-gray-100">
-                                        <i className="fa-brands fa-twitter"></i>
+                                  
+                                    {socialmedia.map((links)=>
 
-                                    </a>
+<a href={links.urllink} className="text-gray-400 text-sm font-poppins hover:text-gray-100">
+<i className={links.icon}></i>
 
-                                    <a href="#" className="text-gray-400 text-sm font-poppins hover:text-gray-100">
-                                        <i className="fa-brands fa-instagram"></i>
+</a>
 
-                                    </a>
 
-                                    <a href="#" className="text-gray-400 text-sm font-poppins hover:text-gray-100">
-                                        <i className="fa-brands fa-github"></i>
+)}
 
-                                    </a>
 
-                                    <a href="#" className="text-gray-400 text-sm font-poppins hover:text-gray-100">
-                                        <i className="fa-brands fa-youtube"></i>
-
-                                    </a>
+                                 
 
 
                                 </div>
@@ -181,7 +200,7 @@ const Footer = () => {
                                     <p className="text-white font-semibold">© Youtube Efe Görkem Ümit</p>
 
                                     <div>
-                                        <img src="img/pay.png" className="w-96" />
+                                        <img src="src/img/pay.png" className="w-96" />
                                     </div>
 
 
