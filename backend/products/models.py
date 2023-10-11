@@ -19,6 +19,14 @@ class Category(models.Model):
         
     )
 
+    menuicon= models.CharField(max_length=200,
+     verbose_name="Font Awesome icon", 
+     help_text="Font Awesome sitesinden alabilirsin icon örnek kullanım : fa-regular fa-circle-xmark   fa-solid fa-circle-xmark",
+     blank=True,
+     null=True
+     
+     )
+
     def __str__(self):
         return self.title
 

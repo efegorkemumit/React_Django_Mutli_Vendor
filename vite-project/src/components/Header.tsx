@@ -95,7 +95,7 @@ const Header = () => {
 
             {data.map((category)=>
                          <a className="px-6 py-3 flex items-center hover:bg-gray-200 transition" href="#">
-                            <i className="fa-solid fa-shoe-prints"></i>
+                            <i className={`${category.menuicon}`}></i>
                            <span className="ml-6 text-gray-500 text-sm font-semibold">{category.title}</span> 
                          </a>
                          )}
