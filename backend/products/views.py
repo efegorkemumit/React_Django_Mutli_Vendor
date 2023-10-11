@@ -75,6 +75,7 @@ class ProductViewSet(viewsets.ViewSet):
         is_new = request.query_params.get("is_new")
         is_top = request.query_params.get("is_top")
         rating = request.query_params.get("rating")
+        qty = request.query_params.get("qty")
 
         if slug:
             self.queryset = self.queryset.filter(slug = slug)
@@ -93,6 +94,10 @@ class ProductViewSet(viewsets.ViewSet):
         if is_top:
             is_top = is_top.lower()== "true"
             self.queryset = self.queryset.filter(is_top=is_top)
+        if qty:
+            self.queryset = self.queryset[:int(qty)]
+       
+
        
         
       

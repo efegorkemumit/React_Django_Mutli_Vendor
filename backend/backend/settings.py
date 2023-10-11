@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'adminsections',
     'companies',
     'customers',
-    'products'
+    'products',
+    'sitesettings'
 
 
 ]

@@ -1,5 +1,53 @@
+import axios from "axios"
+import React, {useEffect, useState} from "react";
+import {MEDIA_URL, BASE_URL} from '../configUrl'
+import Product from "../components/Product";
 
 const Footer = () => {
+
+    const[footerone, setData] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/sitesettings/footer/select/?footercolumuns=one').then((response)=>{
+        
+        setData(response.data);
+
+      })
+    }, [] )
+
+
+    const[footertwo, setDatatwo] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/sitesettings/footer/select/?footercolumuns=two').then((response)=>{
+        
+        setDatatwo(response.data);
+
+      })
+    }, [] )
+
+    const[footerth, setDatathree] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/sitesettings/footer/select/?footercolumuns=there').then((response)=>{
+        
+        setDatathree(response.data);
+
+      })
+    }, [] )
+
+    const[footerfour, setDatafour] =useState([])
+
+    useEffect(()=>{
+      axios.get(BASE_URL+'/sitesettings/footer/select/?footercolumuns=four').then((response)=>{
+        
+        setDatafour(response.data);
+
+      })
+    }, [] )
+
+
+
 
     return (
       <>
@@ -46,11 +94,16 @@ const Footer = () => {
                                 <div>
                                     <h3 className="text-xl text-white font-semibold uppercase tracking-wide mt-10 lg:mt-0"> Support</h3>
                                     <div className="mt-4 space-y-4">
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Document</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Pricing</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Api</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Guides</a>
-                                    
+                                        
+                                        
+{footerone.map((footerone)=>
+
+<a href={footerone.urllink} className="text-gray-300 hover:text-white font-semibold block">{footerone.title}</a>
+
+
+)}
+                                        
+                                   
 
                                     </div>
 
@@ -60,11 +113,12 @@ const Footer = () => {
                                 <div>
                                     <h3 className="text-xl text-white font-semibold uppercase tracking-wide mt-10 lg:mt-0"> Community</h3>
                                     <div className="mt-4 space-y-4">
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">GitHub</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Discord</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Present</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Plugins</a>
-                                    
+                                    {footertwo.map((footertwos)=>
+
+<a href={footertwos.urllink} className="text-gray-300 hover:text-white font-semibold block">{footertwos.title}</a>
+
+
+)}
 
                                     </div>
 
@@ -78,11 +132,12 @@ const Footer = () => {
                                 <div>
                                     <h3 className="text-xl text-white font-semibold uppercase tracking-wide mt-10 lg:mt-0"> Project</h3>
                                     <div className="mt-4 space-y-4">
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Download</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Changelog</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">All Versions</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Pricing</a>
-                                    
+                                    {footerth.map((footerthere)=>
+
+                <a href={footerthere.urllink} className="text-gray-300 hover:text-white font-semibold block">{footerthere.title}</a>
+
+
+                            )}
 
                                     </div>
 
@@ -92,11 +147,12 @@ const Footer = () => {
                                 <div>
                                     <h3 className="text-xl text-white font-semibold uppercase tracking-wide mt-10 lg:mt-0">  Started</h3>
                                     <div className="mt-4 space-y-4">
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Editor Setup</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Browser Support</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Upgrade Guide</a>
-                                        <a href="#" className="text-gray-300 hover:text-white font-semibold block">Reusing Styles</a>
-                                    
+                                    {footerfour.map((footerfourc)=>
+
+<a href={footerfourc.urllink} className="text-gray-300 hover:text-white font-semibold block">{footerfourc.title}</a>
+
+
+            )}
 
                                     </div>
 

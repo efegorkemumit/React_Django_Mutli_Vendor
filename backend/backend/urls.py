@@ -6,11 +6,16 @@ from django.conf.urls.static import static
 from rest_framework import routers
 from rest_framework.routers import DefaultRouter
 from products.views import CategoryViewSet, BrandViewSet, ProductViewSet
+from sitesettings.views import FooterListViewSet, SliderViewSet, AboutViewSet, SocialMediaViewSet
 
 router = routers.DefaultRouter()
 router.register('api/category/select', CategoryViewSet)
 router.register('api/brand/select', BrandViewSet)
 router.register('api/product/select', ProductViewSet)
+router.register('api/sitesettings/footer/select',FooterListViewSet )
+router.register('api/sitesettings/slider/select',SliderViewSet )
+router.register('api/sitesettings/about/select',AboutViewSet )
+router.register('api/sitesettings/social/select',SocialMediaViewSet )
 
 
 urlpatterns = [

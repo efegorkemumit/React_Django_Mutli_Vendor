@@ -20,7 +20,7 @@ const Home = () => {
     const[products, setProducts] =useState([])
 
     useEffect(()=>{
-      axios.get(BASE_URL+'/product/select/?is_top=True').then((response)=>{
+      axios.get(BASE_URL+'/product/select/?is_top=True&qty=4').then((response)=>{
         
         setProducts(response.data);
 
@@ -30,7 +30,7 @@ const Home = () => {
     const[newproducts, newsetProducts] =useState([])
 
     useEffect(()=>{
-      axios.get(BASE_URL+'/product/select/?is_new=True').then((response)=>{
+      axios.get(BASE_URL+'/product/select/?is_new=True&qty=12').then((response)=>{
         
         newsetProducts(response.data);
 
