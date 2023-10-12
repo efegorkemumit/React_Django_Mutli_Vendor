@@ -76,6 +76,9 @@ class ProductViewSet(viewsets.ViewSet):
         is_top = request.query_params.get("is_top")
         rating = request.query_params.get("rating")
         qty = request.query_params.get("qty")
+        size = request.query_params.get("size")
+        title = request.query_params.get("title")
+        brandid = request.query_params.get("brandid")
 
         if slug:
             self.queryset = self.queryset.filter(slug = slug)
@@ -96,6 +99,13 @@ class ProductViewSet(viewsets.ViewSet):
             self.queryset = self.queryset.filter(is_top=is_top)
         if qty:
             self.queryset = self.queryset[:int(qty)]
+        if title:
+            self.queryset = self.queryset.filter(title__icontains = title)
+        if brandid:
+            self.queryset = self.queryset.filter(brandid = brandid)
+        if size:
+            self.queryset = self.queryset.filter(size = size)
+
        
 
        
