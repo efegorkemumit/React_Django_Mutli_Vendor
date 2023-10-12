@@ -1,6 +1,31 @@
-import React from 'react'
+import axios from "axios"
+import React, {useEffect, useState} from "react";
+import {MEDIA_URL, BASE_URL} from '../configUrl'
 
 function About() {
+
+  const[about, setabout] =useState([])
+
+  useEffect(()=>{
+    axios.get(BASE_URL+'/sitesettings/about/select/').then((response)=>{
+      
+      setabout(response.data);
+
+    })
+  }, [] )
+
+  const[socialmedia, setsocial] =useState([])
+
+
+  useEffect(()=>{
+      axios.get(BASE_URL+'/sitesettings/social/select').then((response)=>{
+        
+          setsocial(response.data);
+
+      })
+    }, [] )
+
+
   return (
     <div>
 
@@ -22,14 +47,30 @@ function About() {
    
 
     <h1 className="text-primary font-semibold text-3xl mb-3"> ABOUT US</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit minus assumenda aperiam officiis voluptate, ipsa earum laborum enim quam, amet recusandae vero perspiciatis, odit aliquam?</p>
+   
+
+    {about.map((aboutus)=>(
+                    <p> {aboutus.description}  </p>
+
+                    ))}
 
 
-    <div className="mt-10 mb-20">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit minus assumenda aperiam officiis voluptate, ipsa earum laborum enim quam, amet recusandae vero perspiciatis, odit aliquam?</p>
-    </div>
+<div className="flex items-center justify-center mt-10 space-x-5">
+
+{socialmedia.map((links)=>
+
+<a href={links.urllink} className="text-gray-400 text-sm font-poppins hover:text-gray-100">
+<i className={links.icon}></i>
+
+</a>
 
 
+)}
+
+  </div>
+
+
+    
     
 
 
