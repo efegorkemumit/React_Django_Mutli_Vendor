@@ -61,17 +61,34 @@ const Shop =() => {
         }))
 
       }
-      const clearFilters = () => {
-        setFilters({
-          category: "",
-          min_price: "",
-          max_price: "",
-          qty: "",
-          size: "",
-          title: "",
-          brandid: "",
-        });
-      };
+
+      const clearFilters = () =>
+      {
+        const empytFilters={
+            category:'',
+            min_price:'',
+            max_price:'',
+            qty:'',
+            size:'',
+            title:'',
+            brandid:'',
+
+        }
+        setFilters(empytFilters);
+
+        const radioInputs =document.querySelectorAll('input[type="radio"]');
+        const textInputs =document.querySelectorAll('input[type="text"]');
+
+        radioInputs.forEach((input)=>{
+            input.checked=false;
+        })
+        textInputs.forEach((input)=>{
+            input.value="";
+        })
+
+
+      }
+      
 
   return (
       
@@ -236,6 +253,11 @@ const Shop =() => {
 
             
                <div className="pt-4 relative">
+
+                <button onClick={clearFilters} className="block w-full py-2 text-center text-white bg-primary border   border-primary rounded-xl font-medium hover:bg-transparent hover:text-primary" type="button">Clear Filter</button>
+
+                
+
 
 
              </div>
