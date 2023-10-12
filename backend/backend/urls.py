@@ -7,6 +7,10 @@ from rest_framework import routers
 from rest_framework.routers import DefaultRouter
 from products.views import CategoryViewSet, BrandViewSet, ProductViewSet
 from sitesettings.views import FooterListViewSet, SliderViewSet, AboutViewSet, SocialMediaViewSet
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 router = routers.DefaultRouter()
 router.register('api/category/select', CategoryViewSet)
@@ -23,6 +27,8 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]+router.urls
 
 if settings.DEBUG:
