@@ -7,6 +7,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import SearchResults from './components/SearchResults'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/contact' element={<Contact/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/register' element={<Register/>}></Route>
+          <Route path='/search-results' element={<SearchResults/>}></Route>
         </Routes>
      <Footer/>
      </BrowserRouter>

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios"
 import {MEDIA_URL, BASE_URL} from '../configUrl'
 import {Link} from 'react-router-dom'
+import SearchComponent from "./SearchComponent";
 
 const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,15 +39,7 @@ const Header = () => {
         </a>
 
          
-        <div className="w-full xl:max-w-xl lg:max-w-lg lg:flex relative hidden">
-            <span className="absolute left-4 top-3 text-lg text-gray-700">
-                <i className="fa-solid fa-magnifying-glass"></i>
-            </span>
-            <input type="text" className="w-full pl-12 border border-r-0 border-primary py-3 px-3 rounded-xl shadow-sm focus:ring-primary" placeholder="Search..."/>
-            <button type="submit" className="bg-primary text-white border border-primary px-8 font-medium rounded-xl hover:bg-transparent hover:text-primary transition">Search</button>
-
-
-        </div>
+       <SearchComponent></SearchComponent>
 
            <div className="space-x-4 flex items-center">
             <a href="#" className="block text-center text-gray-700 hover:text-primary transition relative">
