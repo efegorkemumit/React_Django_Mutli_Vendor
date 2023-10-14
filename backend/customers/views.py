@@ -18,7 +18,7 @@ class CustomersUserLoginView(APIView):
             try:
                 user  = CustomerUserProfile.objects.get(email=email)     
             except CustomerUserProfile.DoesNotExist:
-                return Response({"error: User not found"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error": "User not found"}, status=status.HTTP_400_BAD_REQUEST)
             
             if user.check_password(password):
                 refresh = RefreshToken.for_user(user)
@@ -28,7 +28,7 @@ class CustomersUserLoginView(APIView):
                 }
                 return Response(data, status=status.HTTP_200_OK)
             else:
-                return Response({"error: wrong password"}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({"error": "wrong password"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @permission_classes((permissions.AllowAny,))

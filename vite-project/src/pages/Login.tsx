@@ -8,6 +8,8 @@ function Login() {
         password:''
     });
 
+    const [error, setError] = useState(null);
+
     const handeChange = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
     }
@@ -20,6 +22,11 @@ function Login() {
     }
     catch(error){
         console.error('Login Failed', error)
+        if (error.response)
+        {
+            setError(error.response.data.error);
+        }
+      
     }
 
 
@@ -57,6 +64,15 @@ function Login() {
                  border-primary rounded-xl uppercase hover:bg-transparent hover:text-primary transition ">Login</button>
 
 
+            </div>
+
+            <div className="mt-4">
+
+{error &&(
+                <div className="mt-4 p-3 bg-red-200 text-red-700 border border-red-400 rounded-xl">
+                    {error}
+                </div>
+)}
             </div>
 
 
