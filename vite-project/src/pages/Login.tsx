@@ -19,6 +19,14 @@ function Login() {
 
         const response = await axios.post('http://127.0.0.1:8000/api/customers/login/', formData)
         console.log('Login Success', response.data);
+        const userData= response.data;
+        const access_token = userData.access
+
+        document.cookie = `id=${userData.id}; path=/`;
+        document.cookie = `access_token=${access_token}; path=/`;
+
+
+
     }
     catch(error){
         console.error('Login Failed', error)

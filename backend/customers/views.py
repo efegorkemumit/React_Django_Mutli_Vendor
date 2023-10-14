@@ -25,6 +25,7 @@ class CustomersUserLoginView(APIView):
                 data = {
                     "refresh": str(refresh),
                     "access": str(refresh.access_token),
+                    "id": user.id
                 }
                 return Response(data, status=status.HTTP_200_OK)
             else:
