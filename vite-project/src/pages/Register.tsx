@@ -9,10 +9,12 @@ function Register() {
         email:'',
         password:'',
         full_name:'',
+        password2:'',
     });
 
     const [error, setError] = useState(null);
     const [successMessage, setsuccessMessage] = useState(null);
+    const [isCheckboxChecked, setisCheckboxChecked] = useState(false);
 
 
 
@@ -22,6 +24,34 @@ function Register() {
 
     const handleLogin = async(e) =>{
         e.preventDefault();
+
+        if(!isCheckboxChecked)
+        {
+            setError("Please accept the terms before register")
+            setsuccessMessage(null);
+            return;
+        }
+
+        if(formData.full_name==='' || formData.email==='' || formData.password==='')
+        {
+            setError("All field are required")
+            setsuccessMessage(null);
+            return;
+        }
+
+        if(formData.password.length < 6)
+        {
+            setError("Password is longer")
+            setsuccessMessage(null);
+            return;
+        }
+
+        if(formData.password2 != formData.password)
+        {
+            setError("not same password")
+            setsuccessMessage(null);
+            return;
+        }
 
         try{
 
@@ -83,7 +113,12 @@ function Register() {
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Password <span class="text-primary" > * </span></label>
-                    <input type="password" class="input-box" name="password" onChange={handeChange} value={formData.password}  placeholder="Enter Password"/>
+                    <input type="password" class="input-box" name="password" onChange={handeChange} value={formData.password}  placeholder="Enter Password" />
+                </div>
+
+                <div>
+                    <label class="text-gray-600 mb-3 block"> Password <span class="text-primary" > * </span></label>
+                    <input type="password" class="input-box" name="password2" onChange={handeChange} value={formData.password2}  placeholder="Enter Password" />
                 </div>
                
 
@@ -91,9 +126,9 @@ function Register() {
 
             <div class="flex items-center justify-between mt-6">
                 <div class="flex items-center">
-                    <input type="checkbox" class="text-primary focus:ring-0 rounded-xl cursor-pointer"/>
+                    <input onChange={(e) =>setisCheckboxChecked(e.target.checked)} type="checkbox" class="text-primary focus:ring-0 rounded-xl cursor-pointer"/>
                     <label class="text-gray-800 ml-3">
-                       <a href="#" class="text-primary"> term & conditions </a>
+                       <span class="text-primary"> term & conditions </span>
                     </label>
 
 
