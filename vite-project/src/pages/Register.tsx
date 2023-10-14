@@ -1,6 +1,7 @@
 import axios from "axios"
 import React, {useEffect, useState} from "react";
 import {MEDIA_URL, BASE_URL} from '../configUrl'
+import {Link} from 'react-router-dom'
 
 function Register() {
 
@@ -9,6 +10,11 @@ function Register() {
         password:'',
         full_name:'',
     });
+
+    const [error, setError] = useState(null);
+    const [successMessage, setsuccessMessage] = useState(null);
+
+
 
     const handeChange = (e) =>{
         setFormData({...formData, [e.target.name]: e.target.value});
@@ -31,17 +37,23 @@ function Register() {
             if(response.status === 201)
             {
                 console.log("Success Register");
+                setsuccessMessage("Register Success");
+                setError(null)
 
             }
             else
             {
                 console.error('Registeration failed', response.data);
+                setError("Registeration failed. Plase check your information")
+                setsuccessMessage(null);
             }
         
 
         }
         catch(error){
             console.error('Registeration error', error)
+            setError("Registeration failed. Plase check your information")
+            setsuccessMessage(null);
         }
 
 
@@ -96,6 +108,24 @@ function Register() {
 
             </div>
 
+            <div class="mt-4">
+            {error &&(
+                <div className="mt-4 p-3 bg-red-200 text-red-700 border border-red-400 rounded-xl">
+                    {error}
+                </div>
+)}
+
+            {successMessage &&(
+                            <div className="mt-4 p-3 bg-green-100 text-green-700 border border-green-400 rounded-xl">
+                                {successMessage}
+                            </div>
+            )}
+
+
+            </div>
+
+
+
 
             <div class="mt-6 flex justify-center relative">
                 <div class="absolute left-0 top-3 w-full border-b-2 border-gray-500"></div>
@@ -117,7 +147,12 @@ function Register() {
 
             </div>
 
-            <p class="mt-4 text-gray-700 text-center">Don't have a account <a class="text-primary font-semibold" href="register.html">Register Now</a></p>
+
+            <p class="mt-4 text-gray-700 text-center">Don't have a account 
+            <Link to="/login">  
+              <span class="text-primary font-semibold">Register Now </span>
+              </Link>
+            </p>
 
 
         </form>
