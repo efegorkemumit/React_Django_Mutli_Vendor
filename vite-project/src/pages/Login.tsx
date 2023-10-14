@@ -36,7 +36,7 @@ function Login() {
         <h2 className="text-3xl uppercase font-medium mb-1">Login</h2>
         <p className="text-gray-600 mb-6 text-sm">Lorem ipsum dolor sit amet.</p>
 
-        <form method="" action="">
+      
 
             <div className="space-y-5">
                 <div>
@@ -83,7 +83,7 @@ function Login() {
             <p className="mt-4 text-gray-700 text-center">Don't have a account <a className="text-primary font-semibold" href="register.html">Register Now</a></p>
 
 
-        </form>
+      
 
 
 
