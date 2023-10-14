@@ -6,6 +6,8 @@ import SearchComponent from "./SearchComponent";
 
 const Header = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const hasAccessToken =document.cookie.includes("access_token")
+
 
   const toggleMobileMenu = () =>{
     setMobileMenuOpen(!isMobileMenuOpen);
@@ -109,9 +111,26 @@ const Header = () => {
                <Link to="/contact">    <a className="text-white font-semibold hover:text-gray-200 transition"> <i className="fa-solid fa-phone"></i> Contact</a></Link>  
                 </div>
                 <div className="space-x-4">
-                <Link to="/login">       <a className="text-white font-semibold hover:text-gray-200 transition"> <i className="fa-solid fa-user"></i> Login</a></Link>  
-                <Link to="/register">     <a className="text-white font-semibold hover:text-gray-200 transition"> <i className="fa-solid fa-user-plus"></i>  Register</a> </Link>  
-            </div>
+                    {!hasAccessToken ? (
+                            <>
+                        <Link to="/login">     
+                          <a className="text-white font-semibold hover:text-gray-200 transition"> <i className="fa-solid fa-user"></i> Login</a>
+                          </Link>  
+                        <Link to="/register">   
+                          <a className="text-white font-semibold hover:text-gray-200 transition"> <i className="fa-solid fa-user-plus"></i>  Register</a> 
+                          </Link>  
+                          </>
+                     ): 
+                     (
+                            <Link to="/logout">   
+                          <a className="text-white font-semibold hover:text-gray-200 transition"> <i className="fa-solid fa-sign-out"></i>  Logout</a> 
+                          </Link>  
+
+                     )
+                     
+                     
+                     }
+                </div>
             </div>
 
 

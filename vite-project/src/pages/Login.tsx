@@ -1,8 +1,27 @@
 import axios from "axios"
 import React, {useEffect, useState} from "react";
 import {MEDIA_URL, BASE_URL} from '../configUrl'
+import {useNavigate, useLocation} from 'react-router-dom'
 
 function Login() {
+
+    const history = useNavigate()
+    const location = useLocation()
+    const redirect = location.search? location.search.split('=')[1]: '/'
+
+    useEffect(()=>{
+        const hasAccessToken =document.cookie.includes("access_token")
+        if(hasAccessToken){
+            history(redirect)
+        }
+
+    }, [history, redirect])
+
+
+
+
+
+
     const [formData, setFormData] =useState({
         email:'',
         password:''
@@ -24,6 +43,9 @@ function Login() {
 
         document.cookie = `id=${userData.id}; path=/`;
         document.cookie = `access_token=${access_token}; path=/`;
+
+
+        window.location.href= redirect
 
 
 

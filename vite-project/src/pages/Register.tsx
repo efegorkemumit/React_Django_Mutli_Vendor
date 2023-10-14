@@ -2,8 +2,21 @@ import axios from "axios"
 import React, {useEffect, useState} from "react";
 import {MEDIA_URL, BASE_URL} from '../configUrl'
 import {Link} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
 
 function Register() {
+
+    const history = useNavigate()
+    const location = useLocation()
+    const redirect = location.search? location.search.split('=')[1]: '/'
+
+    useEffect(()=>{
+        const hasAccessToken =document.cookie.includes("access_token")
+        if(hasAccessToken){
+            history(redirect)
+        }
+
+    }, [history, redirect])
 
     const [formData, setFormData] =useState({
         email:'',
