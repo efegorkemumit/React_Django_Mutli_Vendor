@@ -4,6 +4,49 @@ import {MEDIA_URL, BASE_URL} from '../configUrl'
 
 function Register() {
 
+    const [formData, setFormData] =useState({
+        email:'',
+        password:'',
+        full_name:'',
+    });
+
+    const handeChange = (e) =>{
+        setFormData({...formData, [e.target.name]: e.target.value});
+    }
+
+    const handleLogin = async(e) =>{
+        e.preventDefault();
+
+        try{
+
+            const response = await axios.post('http://127.0.0.1:8000/api/customers/register/', formData,{
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+            })
+
+
+
+
+            if(response.status === 201)
+            {
+                console.log("Success Register");
+
+            }
+            else
+            {
+                console.error('Registeration failed', response.data);
+            }
+        
+
+        }
+        catch(error){
+            console.error('Registeration error', error)
+        }
+
+
+    }
+
 
 
   return (
@@ -20,21 +63,17 @@ function Register() {
             <div class="space-y-5">
                 <div>
                     <label class="text-gray-600 mb-3 block"> Full Name <span class="text-primary" > * </span></label>
-                    <input type="email" class="input-box" placeholder="example@example.com"/>
+                    <input type="text" class="input-box" name="full_name" onChange={handeChange} value={formData.full_name}   placeholder="example@example.com"/>
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Email Adress <span class="text-primary" > * </span></label>
-                    <input type="email" class="input-box" placeholder="example@example.com"/>
+                    <input type="email" class="input-box" name="email" onChange={handeChange} value={formData.email}  placeholder="example@example.com"/>
                 </div>
                 <div>
                     <label class="text-gray-600 mb-3 block"> Password <span class="text-primary" > * </span></label>
-                    <input type="password" class="input-box" placeholder="Enter Password"/>
+                    <input type="password" class="input-box" name="password" onChange={handeChange} value={formData.password}  placeholder="Enter Password"/>
                 </div>
-                <div>
-                    <label class="text-gray-600 mb-3 block"> Confirm Password <span class="text-primary" > * </span></label>
-                    <input type="password" class="input-box" placeholder="Enter Password"/>
-                </div>
-
+               
 
             </div>
 
@@ -51,7 +90,7 @@ function Register() {
 
             </div>
             <div class="mt-4">
-                <button type="submit" class="block w-full py-2 text-center text-white bg-primary border
+                <button onClick={handleLogin}  class="block w-full py-2 text-center text-white bg-primary border
                  border-primary rounded-xl uppercase hover:bg-transparent hover:text-primary transition ">Register</button>
 
 
