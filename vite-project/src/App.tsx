@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Logout from './pages/Logout'
 import SearchResults from './components/SearchResults'
+import UserDetail from './pages/UserDetail'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/register' element={<Register/>}></Route>
           <Route path='/search-results' element={<SearchResults/>}></Route>
           <Route path='/logout' element={<Logout/>}></Route>
+          <Route path='/user-detail' element={<UserDetail/>}></Route>
         </Routes>
      <Footer/>
      </BrowserRouter>
