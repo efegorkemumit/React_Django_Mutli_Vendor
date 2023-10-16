@@ -154,7 +154,7 @@ MEDIA_URL= "media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL="companies.CompanyUser"
-AUTH_USER_MODEL="customers.CustomerUserProfile"
+
 AUTH_USER_MODEL="adminsections.CustomerUser"
 
 
@@ -182,3 +182,5 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME_LAMBDA': lambda token: timedelta(days=1),
     'SLIDING_TOKEN_LIFETIME_LAMBDA': lambda token: timedelta(days=14),
 }
+
+from customers.settings import *
