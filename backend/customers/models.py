@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.conf import settings
 
+customer_setting = settings.CUSTOMER_SETTING
 
 class CustomerUserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):

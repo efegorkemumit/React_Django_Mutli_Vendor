@@ -2,7 +2,9 @@ from django.urls import path, include
 from rest_framework import  serializers
 from .models import CustomerUserProfile
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from django.conf import settings
 
+customer_setting = settings.CUSTOMER_SETTING
 
 class CustomerUserRegisterSerializer(serializers.ModelSerializer):
     class Meta:

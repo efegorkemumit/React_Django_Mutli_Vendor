@@ -10,6 +10,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import CustomerUserProfile
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
+from django.conf import settings
+
+customer_setting = settings.CUSTOMER_SETTING
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class= MyTokenObtainPairSerializer

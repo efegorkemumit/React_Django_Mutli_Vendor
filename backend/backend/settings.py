@@ -153,9 +153,8 @@ MEDIA_URL= "media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL="companies.CompanyUser"
 
-AUTH_USER_MODEL="adminsections.CustomerUser"
+
 
 
 SPECTACULAR_SETTINGS = {
@@ -184,3 +183,4 @@ SIMPLE_JWT = {
 }
 
 from customers.settings import *
+from adminsections.settings import *
